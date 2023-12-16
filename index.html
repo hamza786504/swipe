@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swipe Detection</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  document.body.addEventListener('touchstart', function (e) {
+    touchStartX = e.touches[0].clientX;
+  });
+
+  document.body.addEventListener('touchmove', function (e) {
+    touchEndX = e.touches[0].clientX;
+  });
+
+  document.body.addEventListener('touchend', function () {
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+    const minSwipeDistance = 50; // Adjust this value based on your preference
+
+    if (swipeDistance > minSwipeDistance) {
+      alert('Swiped from left to right!');
+      // You can perform any other actions here
+    }
+  }
+</script>
+
+</body>
+</html>
